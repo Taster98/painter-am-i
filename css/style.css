@@ -1,0 +1,118 @@
+body{
+    overflow: hidden;
+}
+
+/* panels*/
+.padder{
+    padding-top:30% !important;
+    padding-left:10% !important;
+    padding-right:10% !important;
+}
+
+#sidebar{
+    background-color: #c6c6c6;
+    max-width: 10vw;
+    z-index: 0;
+}
+
+#drawingarea{
+    background-color: white !important;
+    min-height: 100%!important;
+    max-height: 100% !important;
+    min-width: 90vw;
+    max-width: 90vw;
+    margin-left:10vw;
+    margin-bottom: 10vh;
+    position:fixed;
+}
+
+/* Tools*/
+.button_custom{
+    min-width:60px;
+    min-height: 60px;
+}
+.mini_padder{
+    padding: 15px !important;
+}
+
+.unticked{
+    border:1px solid black;
+    box-shadow: -3px 3px black, -2px 2px black, -1px 1px black;
+}
+
+.ticked{
+    border:1px solid black;
+    background-color: antiquewhite;
+}
+
+#pencil{
+    background-image: url("../img/pencil.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#brush{
+    background-image: url("../img/brush.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#bucket{
+    background-image: url("../img/bucket.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#text{
+    background-image: url("../img/text.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#rubber{
+    background-image: url("../img/rubber.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#picker{
+    background-image: url("../img/picker.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 80% auto;
+}
+
+#color{
+    min-width: 100%;
+}
+
+.button_custom_size{
+    min-width:40px;
+    min-height: 40px;
+}
+
+#small{
+    background-image: url("../img/circle.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 30% auto;
+}
+
+#medium{
+    background-image: url("../img/circle.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 50% auto;
+}
+
+#large{
+    background-image: url("../img/circle.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 70% auto;
+}

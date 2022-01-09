@@ -1,0 +1,135 @@
+<!-- This simple webapp has only a learning purpose. It emulates the old MS Paint.-->
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <title>Painter am I</title>
+
+        <!-- Custom styles and icon-->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="img/icon.png"/>
+
+        <!-- useful meta-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Luiggi">
+        <meta name="description" content="Painter am I is a MS Paint alike simple webapp made for fun." />
+
+        <!-- Bootstrap stuffs css-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <!-- jQuery stuff -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body onload="changeCursorIcon('pencil')">
+        <!-- Heading part -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">Painter Am I</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">File</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">New (Ctrl + N)</a>
+                    <a class="dropdown-item" href="#">Open (Ctrl + O)</a>
+                    <a class="dropdown-item" href="#">Save (Ctrl + S)</a>
+                    <a class="dropdown-item" href="#">Save As... (Ctrl + Shift + S)</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Print (Ctrl + P)</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Edit</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Undo (Ctrl + Z)</a>
+                    <a class="dropdown-item" href="#">Repeat (Ctrl + Y)</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Cut (Ctrl + X)</a>
+                    <a class="dropdown-item" href="#">Copy (Ctrl + C)</a>
+                    <a class="dropdown-item" href="#">Paste (Ctrl + V)</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Colors</a>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Invert Colors</a>
+                    <a class="dropdown-item" href="#">Edit Colors</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <!-- Canvas aka drawing area-->
+        <canvas id="drawingarea">
+        </canvas>
+        <!-- Sidebar with tools-->
+        <div class="sticky-top h-100" id="sidebar">
+            <nav id="sidebar" class="vh-100">
+                <div class="container padder">
+                    <label for="strumenti"> Strumenti</label>
+                    <div class="row" id="strumenti">
+                        <div class="col-md-6 mini_padder">
+                            <button class="ticked button_custom" id="pencil" title="pencil" onclick="tickButton('pencil','tool')"></button>
+                        </div>
+                        <div class="col-md-6 mini_padder">
+                            <button class="unticked button_custom" id="rubber" title="rubber" onclick="tickButton('rubber','tool')"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mini_padder">
+                            <button class="unticked button_custom" id="picker" title="picker" onclick="tickButton('picker','tool')"></button>
+                        </div>
+                        <div class="col-md-6 mini_padder">
+                            <button class="unticked button_custom" id="bucket" title="bucket" onclick="tickButton('bucket','tool')"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mini_padder">
+                            <button class="unticked button_custom" id="brush" title="brush" onclick="tickButton('brush','tool')"></button>
+                        </div>
+                        <div class="col-md-6 mini_padder">
+                            <button class="unticked button_custom" id="text" title="text" onclick="tickButton('text','tool')"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container padder">
+                    <div class="row">
+                        <div class="col-md-12 mini_padder">
+                            <label for="color"> Scegli colore</label>
+                            <input type="color" id="color" name="color"
+                            value="#00FF00">
+                        </div>
+                    </div>
+                    <label for="size"> Dimensione </label>
+                    <div class="row" id="size">
+                        <div class="col-md-4 mini_padder">
+                            <button class="ticked button_custom_size" id="small" title="small" onclick="tickButton('small','dimension')"></button>
+                        </div>
+                        <div class="col-md-4 mini_padder">
+                            <button class="unticked button_custom_size" id="medium" title="medium" onclick="tickButton('medium','dimension')"></button>
+                        </div>
+                        <div class="col-md-4 mini_padder">
+                            <button class="unticked button_custom_size" id="large" title="large" onclick="tickButton('large','dimension')"></button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Again Bootstrap stuffs but JS-->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- Custom JS for style -->
+        <script src="js/custom_styling.js"></script>
+    </body>
+</html>
